@@ -1,0 +1,30 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - staging
+      - production
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install prod-only libraries
+        run: yarn install --production=true
+      - name: Build Binary
+        run: zip -r deployment.zip *
+      - name: Default deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          function_name: thumb
+          zip_file: deployment.zip
