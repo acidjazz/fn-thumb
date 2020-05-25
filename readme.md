@@ -9,11 +9,6 @@ staging | production
 --- | ---
 ![Test](https://github.com/acidjazz/fn-thumb/workflows/Test/badge.svg) | ![Test](https://github.com/acidjazz/fn-thumb/workflows/Test/badge.svg)
 
-## Deployment Status
-staging | production
---- | ---
-![Deploy](https://github.com/acidjazz/fn-thumb/workflows/Deploy/badge.svg?branch=staging) | ![Deploy](https://github.com/acidjazz/fn-thumb/workflows/Deploy/badge.svg?branch=production)
-
 ## Example Usage
 
 ```php
