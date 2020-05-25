@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha **/*.spec.js",
+    "locally": "node -e \"console.log(require('./index').handler({}));\""
+  },
+  "dependencies": {
+    "aws-sdk": "^2.633.0",
+    "sharp": "^0.24.1"
+  }
+}
